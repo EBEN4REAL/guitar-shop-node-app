@@ -59,6 +59,10 @@ userSchema.pre('save', function(next){
     }
 })
 
+userSchema.methods.comparePassword = (candidatePassword, callback) => {
+    
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = {User}

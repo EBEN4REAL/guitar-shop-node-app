@@ -38,6 +38,18 @@ app.post('/api/users/register' , (req,res) => {
     })
 })
 
+app.post('/api/users/login', (req, res) => {
+    // Find Email
+    User.findOne({'email': req.body.email}, (err,user) => {
+        if(!user) return res.json({loginSuccess: false, message: 'Auth failes, email not fund'})
+        
+    });
+
+    // Check Password
+
+    // generate a token
+});
+
 
 const port = process.env.PORT || 3002;
 
