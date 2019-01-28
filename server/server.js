@@ -15,6 +15,9 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true
 });
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -47,14 +50,13 @@ app.post('/api/users/login', (req, res) => {
         user.comparePassword(req.body.password, (err,isMatch) => {
             if(!isMatch){
                 return res.json({loginSuccess:false, message: "wrong password"});
-
-                user.generateToken((err,user) => {
-                    if(err) return res.status(400).send(err);
-                    res.cookie('w_auth', user.token).status(200).json({
-                        loginSuccess: true
-                    })
-                })
             }
+              user.generateToken((err, user) => {
+                  if (err) return res.status(400).send(err);
+                  res.cookie('w_auth', user.token).status(200).json({
+                      loginSuccess: true
+                  })
+              })
         });
     });
 
