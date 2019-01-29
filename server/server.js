@@ -32,7 +32,7 @@ const {User} = require('./models/user');
 // ============================
 //      USERS
 // ============================
-app.post('/api/users/register' , auth , (req,res) => {
+app.post('/api/users/register' , (req,res) => {
     const user = new User(req.body);
 
     user.save((err,doc) => {
@@ -64,8 +64,10 @@ app.post('/api/users/login', (req, res) => {
     });
 });
 
-app.get('/api/users/auth' , (req,res) => {
-
+app.get('/api/users/auth' , auth , (req,res) => {
+    res.status(200).json({
+        user: req.user
+    })
 });
 
 const port = process.env.PORT || 3002;
