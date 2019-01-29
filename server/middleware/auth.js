@@ -9,7 +9,11 @@ let auth = (req,res,next) => {
             isAuth: false,
             error: true
         })
-    })
+    });
+
+    req.token= token;
+    req.user = user;
+    next();
 }
 
 module.exports = {auth};
