@@ -43,7 +43,7 @@ const userSchema = mongoose.Schema({
      }
 });
 userSchema.pre('save', function(next){
-    var user = this;
+    let user = this;
 
     if(user.isModified('password')){  // IF They are changing the passwords
         bcrypt.genSalt(SALT, function (err, salt) {
@@ -76,6 +76,14 @@ userSchema.methods.generateToken = function(callback){
     user.save(function(err,user){
         if(err) return callback(err);
         callback(null, user);
+    })
+}
+
+userSchema.statics.findByToken =  function(token, callback){
+    let user = this;
+
+    jwt.verify(token, process.env.SECRET, function(err, decode){
+        
     })
 }
 const User = mongoose.model('User', userSchema);

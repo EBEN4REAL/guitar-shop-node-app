@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true
 });
@@ -23,13 +23,16 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// MIDDLEWARES
+const {auth} = require('./middleware/auth');
+
 // MODELS
 const {User} = require('./models/user');
 
 // ============================
 //      USERS
 // ============================
-app.post('/api/users/register' , (req,res) => {
+app.post('/api/users/register' , auth , (req,res) => {
     const user = new User(req.body);
 
     user.save((err,doc) => {
@@ -44,7 +47,7 @@ app.post('/api/users/register' , (req,res) => {
 app.post('/api/users/login', (req, res) => {
 
     // Find Email
-    User.findOne({'email': req.body.email}, (err,user) => {
+    User.findOne({email: req.body.email}, (err,user) => {
         if(!user) return res.json({loginSuccess: false, message: 'Auth failes, email not fund'})
 
         user.comparePassword(req.body.password, (err,isMatch) => {
@@ -59,12 +62,11 @@ app.post('/api/users/login', (req, res) => {
               })
         });
     });
-
-    // Check Password
-
-    // generate a token
 });
 
+app.get('/api/users/auth' , (req,res) => {
+
+});
 
 const port = process.env.PORT || 3002;
 
