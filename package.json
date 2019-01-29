@@ -8,7 +8,7 @@
     "start": "node server/server.js",
     "server": "nodemon server/server.js"
   },
-  "author": "",
+  "author": "Eben",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

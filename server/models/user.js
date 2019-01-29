@@ -48,7 +48,6 @@ userSchema.pre('save', function(next){
     if(user.isModified('password')){  // IF They are changing the passwords
         bcrypt.genSalt(SALT, function (err, salt) {
             if (err) return next(err);
-
             bcrypt.hash(user.password, salt, function (err, hash) {
                 if (err) return next(err);
                 user.password = hash;
@@ -73,7 +72,7 @@ userSchema.methods.generateToken = function(callback){
     let token = jwt.sign(user._id.toHexString(), process.env.SECRET);
 
     user.token = token;
-    user.save(function(err,user){
+    user.save((err,user) => {
         if(err) return callback(err);
         callback(null, user);
     })
@@ -81,7 +80,6 @@ userSchema.methods.generateToken = function(callback){
 
 userSchema.statics.findByToken =  function(token, callback){
     var user = this;
-    
     jwt.verify(token, process.env.SECRET, function(err, decode){
         user.findOne({"_id": decode, "token": token}, function(err,user){
             if(err) return callback(err);
