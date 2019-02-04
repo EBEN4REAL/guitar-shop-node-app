@@ -36,13 +36,30 @@ const {Product} = require('./models/products');
 // ============================
 //      Products
 // ============================
+app.get('/api/products/articles', (req,res) => {
+    let order = req.query.order ? req.query.order : 'asc';
+    let sortBy = req.query.sortBy ? req.query.sortBy : 'id';
+    let limit = req.query.limit ? req.query.limit : 100;
+
+    Product.find()
+        .populate('brand')
+            .populate('wood')
+                .sort([
+                    [sortBy, order]
+                ])
+                    .limit(limit)
+                        .exec((err,articles)  => {
+                        if(err) return res.status(400).send(err);
+                        res.send(articles);
+                    })
+})
 
 app.get('/api/product/articles_by_id' , (req,res) => {
     let type = req.query.type;
     let items = req.query.id;
 
     if(type === "array"){
-        let Ids = req.query.id.split(',');
+        let Ids =  req.query.id.split(',');
         items = []
         items = Ids.map(item => {
             return mongoose.Types.ObjectId(item)
@@ -50,7 +67,10 @@ app.get('/api/product/articles_by_id' , (req,res) => {
         console.log(items);
     }
 
-    Product.find({'_id': {$in:items}}).exec((err, docs) => {
+    Product.find({'_id': {$in:items}})
+        .populate('brand')
+        .populate('wood')
+       .exec((err, docs) => {
         return res.status(200).send(docs);
     })
 
