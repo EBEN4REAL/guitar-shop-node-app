@@ -47,6 +47,13 @@ app.post('/api/product/wood' , auth, admin , (req,res) => {
     })
 })
 
+app.get('/api/product/woods', (req,res) => {
+    Wood.find((err,woods) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(woods)
+    })
+})
+
 
 // ============================
 //      BRANDS
