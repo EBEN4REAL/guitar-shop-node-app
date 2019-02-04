@@ -30,12 +30,21 @@ const {admin} = require('./middleware/admin');
 // MODELS
 const {User} = require('./models/user');
 const {Brand} = require('./models/brand');
+const {Wood} = require('./models/wood');
 
 // ============================
 //      WOODS
 // ============================
 app.post('/api/product/wood' , auth, admin , (req,res) => {
-    
+    const wood = new Wood(req.body);
+
+    wood.save((err, doc) => {
+        if(err) return res.json({success: false, err});
+        res.status(200).json({
+            success: true,
+            wood: doc
+        })
+    })
 })
 
 
