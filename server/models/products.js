@@ -44,7 +44,16 @@ const productSchema = mongoose.Schema({
      },
      sold: {
          type: Number,
-         maxLength: 100
+         maxLength: 100,
+         default: 0
+     },
+     publish: {
+         required: true,
+         type: Boolean
+     },
+     images: {
+         type: Array,
+         default: []
      }
 
 });
