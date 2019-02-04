@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-console.log("Object Id:" + mongoose.Schema.Types.ObjectId);
 
 const Schema = mongoose.Schema;
 
@@ -56,8 +55,8 @@ const productSchema = mongoose.Schema({
          default: []
      }
 
-});
+}, {timestamps: true});
 
-const Products = mongoose.model('Products', productSchema);
+const Product = mongoose.model('Products', productSchema);
 
-module.exports = {Products};
+module.exports = {Product};

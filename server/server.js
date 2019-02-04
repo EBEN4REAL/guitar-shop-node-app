@@ -31,10 +31,47 @@ const {admin} = require('./middleware/admin');
 const {User} = require('./models/user');
 const {Brand} = require('./models/brand');
 const {Wood} = require('./models/wood');
+const {Product} = require('./models/products');
+
+// ============================
+//      Products
+// ============================
+
+app.get('/api/product/articles_by_id' , (req,res) => {
+    let type = req.query.type;
+    let items = req.query.id;
+
+    if(type === "array"){
+        let IDs =  req.query.id.split(',');
+        items = []
+        items = Ids.map(item => {
+            return mongoose.Types.ObjectId(item)
+        })
+        console.log(items);
+    }
+
+    Product.find({'_id': {$in:items}}).exec((err, docs) => {
+        return res.status(200).send(docs);
+    })
+
+})
+
+app.post('/api/product/article', auth,admin, (req,res) => {
+    const product = new Product(req.body);
+    product.save((err,doc) => {
+        if(err) return res.status(400).json({success: false, err});
+        res.status(200).json({
+            success: true,
+            product: doc
+        })
+    })
+})
 
 // ============================
 //      WOODS
 // ============================
+
+
 app.post('/api/product/wood' , auth, admin , (req,res) => {
     const wood = new Wood(req.body);
 
