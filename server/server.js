@@ -39,7 +39,7 @@ const {Product} = require('./models/products');
 app.get('/api/products/articles', (req,res) => {
     let order = req.query.order ? req.query.order : 'asc';
     let sortBy = req.query.sortBy ? req.query.sortBy : 'id';
-    let limit = req.query.limit ? req.query.limit : 100;
+    let limit = req.query.limit ? parseInt(req.query.limit) : 100;
 
     Product.find()
         .populate('brand')
