@@ -28,6 +28,22 @@ const {auth} = require('./middleware/auth');
 
 // MODELS
 const {User} = require('./models/user');
+const {Brand} = require('./models/brand');
+
+// ============================
+//      BRNAD
+// ============================
+app.post('/api/product/brand', auth, admin,  (req,res) => {
+    const brand = new Brand(req.body);
+
+    brand.save((err,doc) => {
+        if(err) return res.json({success: false, err:err});
+        res.status(200).json({
+            success: true,
+            brandData: doc
+        })
+    })
+});
 
 // ============================
 //      USERS
@@ -56,7 +72,7 @@ app.post('/api/users/login', (req, res) => {
             }
             user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
-                res.cookie('wave_auth', user.token).status(200).json({
+                res.cookie('w_auth', user.token).status(200).json({
                     loginSuccess: true
                 })
             })
@@ -76,6 +92,19 @@ app.get('/api/users/auth' , auth , (req,res) => {
         history: req.user.history
     })
 });
+
+app.get('/api/user/logout' , auth ,  (req,res) => {
+    User.findOneAndUpdate(
+        {_id: req.user._id},
+        {token: ''},
+        (err,doc)=>{
+            if(err) return res.json({success:false, err})
+            return res.status(200). send({
+                success: true
+            })
+        }
+    )
+})
 
 const port = process.env.PORT || 3002;
 
