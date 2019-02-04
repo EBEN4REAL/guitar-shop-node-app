@@ -25,6 +25,7 @@ app.use(cookieParser());
 
 // MIDDLEWARES
 const {auth} = require('./middleware/auth');
+const {admin} = require('./middleware/admin');
 
 // MODELS
 const {User} = require('./models/user');
@@ -33,7 +34,7 @@ const {Brand} = require('./models/brand');
 // ============================
 //      BRNAD
 // ============================
-app.post('/api/product/brand', auth, admin,  (req,res) => {
+app.post('/api/product/brand', auth, admin, (req,res) => {
     const brand = new Brand(req.body);
 
     brand.save((err,doc) => {
