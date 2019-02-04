@@ -32,7 +32,15 @@ const {User} = require('./models/user');
 const {Brand} = require('./models/brand');
 
 // ============================
-//      BRNAD
+//      WOODS
+// ============================
+app.post('/api/product/wood' , auth, admin , (req,res) => {
+    
+})
+
+
+// ============================
+//      BRANDS
 // ============================
 app.post('/api/product/brand', auth, admin, (req,res) => {
     const brand = new Brand(req.body);
