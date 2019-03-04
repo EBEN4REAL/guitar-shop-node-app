@@ -36,7 +36,13 @@ const {Product} = require('./models/products');
 // ============================
 //      Products
 // ============================
-app.get('/api/products/articles', (req,res) => {
+
+// BY ARRIVAL
+// /articles?sortBY=createdAt&order=desc&limit=4
+
+// BY SALE
+// /articles?sortBy=sold&order=desc&limit=100&skip=5
+app.get('/api/product/articles', (req,res) => {
     let order = req.query.order ? req.query.order : 'asc';
     let sortBy = req.query.sortBy ? req.query.sortBy : 'id';
     let limit = req.query.limit ? parseInt(req.query.limit) : 100;
@@ -48,9 +54,9 @@ app.get('/api/products/articles', (req,res) => {
                     [sortBy, order]
                 ])
                     .limit(limit)
-                        .exec((err,articles)  => {
+                        .exec((err,products)  => {
                         if(err) return res.status(400).send(err);
-                        res.send(articles);
+                        res.send(products);
                     })
 })
 
@@ -110,6 +116,7 @@ app.get('/api/product/woods', (req,res) => {
         res.status(200).send(woods)
     })
 })
+
 
 
 // ============================
@@ -182,7 +189,7 @@ app.get('/api/users/auth' , auth , (req,res) => {
     })
 });
 
-app.get('/api/user/logout' , auth ,  (req,res) => {
+app.get('/api/users/logout' , auth ,  (req,res) => {
     User.findOneAndUpdate(
         {_id: req.user._id},
         {token: ''},
@@ -194,6 +201,7 @@ app.get('/api/user/logout' , auth ,  (req,res) => {
         }
     )
 })
+
 
 const port = process.env.PORT || 3002;
 
