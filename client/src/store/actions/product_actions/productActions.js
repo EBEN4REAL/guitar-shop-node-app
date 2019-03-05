@@ -64,8 +64,5 @@ export const getWoods = () => {
 // /////////////////
  
 export const getProductsToShop = () => {
-    return {
-        type: GET_SHOP_PRODUCTS,
-        payload: "Cool",
-    }
+
 }
