@@ -3,6 +3,9 @@ import Button from './Button';
 
 
 class Card extends Component {
+    componentDidMount(){
+        console.log(this.props);
+    }
     renderCardImage(images){
         if(images.length > 0){
             return images[0].url
