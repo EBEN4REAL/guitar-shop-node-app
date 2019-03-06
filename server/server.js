@@ -11,8 +11,10 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
+app.use(express.static('client/build'));
+
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
 });
 
@@ -202,6 +204,13 @@ app.get('/api/users/logout' , auth ,  (req,res) => {
     )
 })
 
+// default
+if(process.env.NODE_env === 'production'){
+    const path = require('path');
+    app.get('/*' , (req,res) => {
+        res.sendfile(path.resolve(__dirname, '../client', 'build','index.html'))
+    })
+}
 
 const port = process.env.PORT || 3002;
 
