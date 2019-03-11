@@ -26,7 +26,7 @@ class Header extends Component {
             },
             {
                 name: "My Account",
-                linkTo: '/user/cart',
+                linkTo: '/user/dashboard',
                 public: false
             },
             {
