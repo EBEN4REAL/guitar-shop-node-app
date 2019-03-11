@@ -1,5 +1,7 @@
 import React from 'react';
 import Login from '../Register_login/login';
+import Button from '../../components/utils/Button';
+import {Link} from 'react-router-dom';
 
 const RegisterLogin = (props) => {
     return (
@@ -9,6 +11,10 @@ const RegisterLogin = (props) => {
                     <div className="left">
                         <h1>New Customers</h1>
                         <p>If you are a new customer create an account here.</p>
+                        <Button
+                            type="default"
+                            linkTo="/register" 
+                            title="Register"/>
                     </div>
                     <div className="right">
                         <h2>
