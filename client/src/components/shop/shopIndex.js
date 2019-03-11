@@ -8,6 +8,7 @@ import { getBrands, getWoods, getProductsToShop} from '../../store/actions/produ
 
 import CollapseCheckbox from '../utils/CollapseCheckBox';
 import CollapseRadio from '../utils/CollapseRadio';
+import LoadMoreSection from '../shop/loadMoreProductsShop';
 
 class Shop extends Component {
 
@@ -26,6 +27,12 @@ class Shop extends Component {
     componentDidMount(){
         this.props.dispatch(getBrands());
         this.props.dispatch(getWoods());
+
+        this.props.dispatch(getProductsToShop(
+            this.state.limit,
+            this.state.skip,
+            this.state.filters
+        ))
     }
 
     handlePrice = (value) => {
@@ -40,7 +47,17 @@ class Shop extends Component {
         }
         return array;
     }
-
+    showFilteredResults = (filters) => {
+        this.props.dispatch(getProductsToShop(
+            this.state.limit,
+            0,
+            filters
+        )).then(() => {
+            this.setState({
+                skip: 0
+            })
+        })
+    }
 
     handleFilters = (filters,category) => {
        const newFilters = {...this.state.filters}
@@ -50,15 +67,30 @@ class Shop extends Component {
             let priceValues = this.handlePrice(filters);
             newFilters[category] = priceValues
         }
-
+        this.showFilteredResults(newFilters);
        this.setState({
            filters: newFilters
        })
     }
-
+    loadMore = () => {
+        console.log(this.state.skip);
+        console.log(this.state.limit);
+        let skip = this.state.skip  + this.state.limit;
+        this.props.dispatch(getProductsToShop(
+            skip,
+            this.state.limit, 
+            this.state.filters,
+            this.props.products.toShop
+        )).then(() => {
+            this.setState({
+                skip
+            })
+        })
+    }
     render() {
-        console.log(this.state.filters)
+        console.log(this.props.filters)
         const products = this.props.products;
+        console.log(products);
         return (
             <div>
                 <PageTop
@@ -94,7 +126,21 @@ class Shop extends Component {
                            
                         </div>
                         <div className="right">
-                            right
+                            <div className="shop_options">
+                                <div className="shop_grids clear">
+                                    grids
+                                </div>
+                            </div>
+                            <div>
+                                <LoadMoreSection
+                                    grid={this.state.grid}
+                                    limit={this.state.limit}
+                                    size={products.toShopSize}
+                                    products={products.toShop}
+                                    loadMore={() => this.loadMore()}
+                                />
+                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -63,6 +63,26 @@ export const getWoods = () => {
 // //  SHOP /////////
 // /////////////////
  
-export const getProductsToShop = () => {
+export const getProductsToShop = (limit, skip, filters=[], previousState=[]) => {
+    const data = {
+        limit,
+        skip,
+        filters
+    }
 
+    const req = axios.post(`${PRODUCT_SERVER}/shop`, data)
+                            .then(response => {
+                                let newState = [
+                                    ...previousState,
+                                    ...response.data.articles
+                                ]
+                                return {
+                                    size: response.data.articles,
+                                    articles: newState
+                                }
+                            })
+    return {
+        type: GET_SHOP_PRODUCTS,
+        payload: req
+    }
 }

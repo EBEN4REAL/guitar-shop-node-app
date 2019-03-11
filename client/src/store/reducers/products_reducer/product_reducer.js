@@ -19,7 +19,7 @@ const  rootReducer =  (state={} , action) => {
           case GET_WOODS:
                 return {...state, woods: action.payload} 
           case GET_SHOP_PRODUCTS:
-               return {...state, shop_products: action.payload}
+               return {...state, toShop: action.payload.articles, toShopSize: action.payload.size}
           default:
                return state;
    }
