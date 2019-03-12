@@ -39,7 +39,8 @@ class Header extends Component {
                 linkTo: '/user_logout',
                 public: false
             }
-        ]
+        ],
+       
     }
     logoutHandler = (item, i) => {
         this.props.dispatch(logoutUser()).then(res =>{

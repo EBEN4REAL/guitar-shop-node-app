@@ -58,6 +58,7 @@ app.post('/api/product/shop' , (req,res) => {
             }
         }
     }
+    
     Product.find(findArgs)
         .populate('brand')
         .populate('wood')
