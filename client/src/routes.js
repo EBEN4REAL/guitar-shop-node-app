@@ -9,6 +9,7 @@ import Auth from './hoc/auth'
 import Shop from './components/shop/shopIndex';
 
 
+
 const Routes = () => {
   return (
     <Layout>
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/" exact component={Auth(Home, null)} />
         <Route path="/register_login" exact component={Auth(RegisterLogin, false)} />
         <Route path="/shop" exact component={Auth(Shop, null)} />
+        <Route path="/add_product" exact component={Auth(AddProduct, true)} />
       </Switch>
     </Layout>
     

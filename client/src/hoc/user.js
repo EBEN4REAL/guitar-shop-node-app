@@ -16,6 +16,21 @@ const links = [
     }
 ]
 
+const admin_links = [
+    {
+        name: "Site Info",
+        linkTo: "/site_info",
+    },
+    {
+        name: "Add product",
+        linkTo: "/add_product",
+    },
+    {
+        name: "Manage categories",
+        linkTo: "/manage_categories",
+    }
+]
+
 const UserLayout = (props) => {
     const generateLinks = (links) => {
             return (
@@ -30,6 +45,14 @@ const UserLayout = (props) => {
             
         ) 
     }
+
+    const genearateAdminLinks = (admin_links) => (
+        admin_links.map((item, index) => {
+            return (
+                <Link to={item.linkTo} key={index}>{item.name}</Link>
+            )
+        })
+    )
     return (
         <div className="container">
             <div className="user_container">
@@ -37,6 +60,10 @@ const UserLayout = (props) => {
                     <h2>My Account</h2>
                     <div className="links">
                         {generateLinks(links)}
+                    </div>
+                    <h2>Admin</h2>
+                    <div className="links">
+                        {genearateAdminLinks(admin_links)}
                     </div>
                 </div>
                 <div className="user_right">
