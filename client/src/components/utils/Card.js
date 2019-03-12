@@ -4,7 +4,6 @@ import Button from './Button';
 
 class Card extends Component {
     componentDidMount(){
-        console.log(this.props);
     }
     renderCardImage(images){
         if(images.length > 0){
@@ -34,11 +33,13 @@ class Card extends Component {
                             ${this.props.price}
                         </div>
                      </div>
-                </div>
+                
                 {
                     props.grid ? 
                         <div className="description">
-                                Something is here
+                               <p>
+                                   {props.description}
+                               </p>
                         </div>
                     : null
                 }
@@ -66,6 +67,7 @@ class Card extends Component {
                             />
                     </div>
                 </div>
+             </div>
             </div>
         )
     }

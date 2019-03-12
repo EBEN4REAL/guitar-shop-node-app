@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PageTop from '../utils/page_top';
 
 import  FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faShoppingBag from '@fortawesome/fontawesome-free-solid/faShoppingBag'
+import faTh from '@fortawesome/fontawesome-free-solid/faTh' 
+import faBars from '@fortawesome/fontawesome-free-solid/faBars' 
 
 import { frets,price } from '../utils/Form/fixedCategories';
 
@@ -12,6 +13,7 @@ import { getBrands, getWoods, getProductsToShop} from '../../store/actions/produ
 import CollapseCheckbox from '../utils/CollapseCheckBox';
 import CollapseRadio from '../utils/CollapseRadio';
 import LoadMoreSection from '../shop/loadMoreProductsShop';
+import { timingSafeEqual } from 'crypto';
 
 class Shop extends Component {
 
@@ -36,8 +38,15 @@ class Shop extends Component {
             this.state.limit,
             this.state.filters
         ))
+        console.log(this.state.grid);
     }
-
+    handleGrid = () => {
+        if(this.state.grid  === ''){
+            this.setState({grid: "grid_bars"});
+        }else{
+            this.setState({grid: ""})
+        }
+    }
     handlePrice = (value) => {
         const data = price;
         let array = [];
@@ -131,7 +140,16 @@ class Shop extends Component {
                         <div className="right">
                             <div className="shop_options">
                                 <div className="shop_grids clear">
-                                    grids
+                                    <div
+                                        className={`grid_btn ${this.state.grid ? '' : 'active'}`}
+                                        onClick={() => this.handleGrid()}>
+                                            <FontAwesomeIcon icon={faTh} />
+                                    </div>
+                                    <div
+                                        className={`grid_btn ${!this.state.grid ? '' : 'active'}`}
+                                        onClick={() => this.handleGrid()}>
+                                            <FontAwesomeIcon icon={faBars} />
+                                    </div>
                                 </div>
                             </div>
                             <div>

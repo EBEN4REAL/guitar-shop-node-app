@@ -3,6 +3,7 @@ import React from 'react';
 import CardBlockShop from '../utils/CardBlockShop';
 
 const loadMore = (props) => {
+    console.log(props.grid);
     return (
        <div>
            <div>

@@ -8,6 +8,7 @@ const  CardBlockShop = (props) => {
         props.products ?
             props.products.map(card => (
                 <Card
+                    grid={props.grid}
                     key={card._id}
                     {...card} />
             ))
