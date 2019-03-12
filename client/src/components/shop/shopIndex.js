@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PageTop from '../utils/page_top';
 
+import  FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faShoppingBag from '@fortawesome/fontawesome-free-solid/faShoppingBag'
+
 import { frets,price } from '../utils/Form/fixedCategories';
 
 import { connect } from 'react-redux';
@@ -29,8 +32,8 @@ class Shop extends Component {
         this.props.dispatch(getWoods());
 
         this.props.dispatch(getProductsToShop(
-            this.state.limit,
             this.state.skip,
+            this.state.limit,
             this.state.filters
         ))
     }
@@ -49,8 +52,8 @@ class Shop extends Component {
     }
     showFilteredResults = (filters) => {
         this.props.dispatch(getProductsToShop(
-            this.state.limit,
             0,
+            this.state.limit,
             filters
         )).then(() => {
             this.setState({
@@ -74,7 +77,7 @@ class Shop extends Component {
     }
     loadMore = () => {
         console.log(this.state.skip);
-        console.log(this.state.limit);
+        console.log(this.state.skip);
         let skip = this.state.skip  + this.state.limit;
         this.props.dispatch(getProductsToShop(
             skip,

@@ -63,7 +63,7 @@ export const getWoods = () => {
 // //  SHOP /////////
 // /////////////////
  
-export const getProductsToShop = (limit, skip, filters=[], previousState=[]) => {
+export const getProductsToShop = (skip, limit, filters=[], previousState=[]) => {
     const data = {
         limit,
         skip,
