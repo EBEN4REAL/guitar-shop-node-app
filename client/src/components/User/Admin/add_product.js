@@ -29,7 +29,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             description: {
-                element: "textarea",
+                elementType: "textarea",
                 value: '',
                 elementConfig: {
                     label: "Product description",
@@ -46,7 +46,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             price: {
-                element: "input",
+                elementType: "input",
                 value: '',
                 elementConfig: {
                     label: "Product price",
@@ -63,7 +63,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             brand: {
-                element: "select",
+                elementType: "select",
                 value: '',
                 elementConfig: {
                     label: "Product brand",
@@ -81,7 +81,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             shipping: {
-                element: "select",
+                elementType: "select",
                 value: '',
                 elementConfig: {
                     label: "Shipping",
@@ -106,7 +106,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             available: {
-                element: "select",
+                elementType: "select",
                 value: '',
                 elementConfig: {
                     label: "Available in stock",
@@ -131,7 +131,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             wood: {
-                element: "select",
+                elementType: "select",
                 value: '',
                 elementConfig: {
                     label: "Wood material",
@@ -147,7 +147,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             frets: {
-                element: "select",
+                elementType: "select",
                 value: '',
                 elementConfig: {
                     label: "Frets",
@@ -176,7 +176,7 @@ class AddProduct extends Component {
                 showlabel: true
             },
             publish: {
-                element: "select",
+                elementType: "select",
                 value: '',
                 elementConfig: {
                     label: "Publish",
@@ -221,6 +221,21 @@ class AddProduct extends Component {
                                 formData={this.state.formData.name}
                                 changed={(element) => this.updateForm(element)}
                             />
+
+                            <FormField
+                                id={'description'}
+                                formData={this.state.formData.description}
+                                changed={(element) => this.updateForm(element)}
+                            />
+
+                            <FormField
+                                id={'price'}
+                                formData={this.state.formData.price}
+                                changed={(element) => this.updateForm(element)}
+                            />
+                            <div className="form_devider">
+
+                            </div>
                        </form>
                     </div>
                 </UserLayout>

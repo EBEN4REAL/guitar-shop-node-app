@@ -40,22 +40,46 @@ const FormField = ({formData, changed, id}) => {
                 )
                 break;
             case("textarea"):
-            formTemplate = (
-                <div className="formBlock">
-                {formData.showlabel ? 
-                    <div className="label_inputs">{formData.elementConfig.label}</div>
-            :null
-            }
-                    <textarea
-                         {...formData.elementConfig}
-                         value={formData.value}
-                         onBlur={(event)=> changed({event,id,blur:true})}
-                         onChange={(event)=> changed({event,id}) }
-                     />
-                    {showError()}
-                </div>
-            )
-            break;
+                formTemplate = (
+                    <div className="formBlock">
+                    {formData.showlabel ? 
+                        <div className="label_inputs">{formData.elementConfig.label}</div>
+                :null
+                }
+                        <textarea
+                            {...formData.elementConfig}
+                            value={formData.value}
+                            onBlur={(event)=> changed({event,id,blur:true})}
+                            onChange={(event)=> changed({event,id}) }
+                        />
+                        {showError()}
+                    </div>
+                )
+                break;
+            case("select"):
+                formTemplate = (
+                    <div className="formBlock">
+                    {formData.showlabel ? 
+                        <div className="label_inputs">{formData.elementConfig.label}</div>
+                :null
+                }
+                        <select
+                             value={formData.value}
+                             onBlur={(event)=> changed({event,id,blur:true})}
+                             onChange={(event)=> changed({event,id}) }
+                        >
+                            <option value="">Select One</option>
+                           {formData.elementConfig.options.map(option => {
+                               return (
+                                   <options name={option.name} key={option.name}>{option.value}</options>
+                               )
+                           })
+                        }
+                        </select>
+                        {showError()}
+                    </div>
+                )
+                break;
             default:
                 formTemplate = null;
         }
