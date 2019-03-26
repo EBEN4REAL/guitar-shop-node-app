@@ -235,6 +235,11 @@ class AddProduct extends Component {
                             />
                             <div className="form_devider">
 
+                            <FormField
+                                id={'brand'}
+                                formData={this.state.formData.brand}
+                                changed={(element) => this.updateForm(element)}
+                            />
                             </div>
                        </form>
                     </div>
