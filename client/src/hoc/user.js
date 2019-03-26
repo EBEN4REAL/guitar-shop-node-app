@@ -19,15 +19,15 @@ const links = [
 const admin_links = [
     {
         name: "Site Info",
-        linkTo: "/site_info",
+        linkTo: "/admin/site_info",
     },
     {
         name: "Add product",
-        linkTo: "/add_product",
+        linkTo: "/admin/add_product",
     },
     {
         name: "Manage categories",
-        linkTo: "/manage_categories",
+        linkTo: "/admin/manage_categories",
     }
 ]
 

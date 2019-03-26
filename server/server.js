@@ -46,7 +46,9 @@ app.post('/api/product/shop' , (req,res) => {
     let skip = parseInt(req.body.skip);
     let findArgs = {};
 
+    
     for(let key in req.body.filters){
+        console.log(req.body.filters);
         if(req.body.filters[key].length > 0){
             if(key === 'price'){
                 findArgs[key] = {
@@ -58,7 +60,7 @@ app.post('/api/product/shop' , (req,res) => {
             }
         }
     }
-    
+    findArgs['publish'] = true;
     Product.find(findArgs)
         .populate('brand')
         .populate('wood')
@@ -245,12 +247,12 @@ app.get('/api/users/logout' , auth ,  (req,res) => {
 })
 
 // // default
-// if(process.env.NODE_env === 'production'){
-//     const path = require('path');
-//     app.get('/*' , (req,res) => {
-//         res.sendfile(path.resolve(__dirname, '../client', 'build','index.html'))
-//     })
-// }
+if(process.env.NODE_env === 'production'){
+    const path = require('path');
+    app.get('/*' , (req,res) => {
+        res.sendfile(path.resolve(__dirname, '../client', 'build','index.html'))
+    })
+}
 
 const port = process.env.PORT || 3002;
 
