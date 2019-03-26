@@ -62,7 +62,7 @@ const UserLayout = (props) => {
                     <div className="links">
                         {generateLinks(links)}
                     </div>
-                    {props.user.userData.isAdmin ? 
+                    {props.user.user_data.isAdmin ? 
                          <div>
                              <h2>Admin</h2>
                              <div className="links">
@@ -84,6 +84,8 @@ const UserLayout = (props) => {
 }
 
 const mapStateToProps = (state) => {
-
+    return {
+        user: state.user
+    }
 }
-export default connect()(UserLayout;
+export default connect(mapStateToProps)(UserLayout);
