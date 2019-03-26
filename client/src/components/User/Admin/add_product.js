@@ -202,6 +202,13 @@ class AddProduct extends Component {
             },
         }
     }
+    componentDidMount(){
+        const formData = this.state.formData;
+
+        this.props.dispatch(getBrands()).then(res => {
+            console.log(this.props.products.brands);
+        })
+    }
     updateForm = (element) => {
         let newFormData = update(element, this.state.formData, 'addProduct');
         this.setState({
@@ -233,13 +240,53 @@ class AddProduct extends Component {
                                 formData={this.state.formData.price}
                                 changed={(element) => this.updateForm(element)}
                             />
-                            <div className="form_devider">
-
+                            <div className="form_devider"> </div>
                             <FormField
                                 id={'brand'}
                                 formData={this.state.formData.brand}
                                 changed={(element) => this.updateForm(element)}
                             />
+
+                            <FormField
+                                id={'shipping'}
+                                formData={this.state.formData.shipping}
+                                changed={(element) => this.updateForm(element)}
+                            />
+
+                             <FormField
+                                id={'wood'}
+                                formData={this.state.formData.wood}
+                                changed={(element) => this.updateForm(element)}
+                            />
+
+                            <FormField
+                                id={'publish'}
+                                formData={this.state.formData.publish}
+                                changed={(element) => this.updateForm(element)}
+                            />
+
+                             <FormField
+                                id={'frets'}
+                                formData={this.state.formData.frets}
+                                changed={(element) => this.updateForm(element)}
+                            />
+
+                            {this.state.formSuccess  ? 
+                                <div className="form_success">
+                                    Success...
+                                </div>
+                            :null
+                            }
+
+                            <div>
+                                {this.state.formError ? 
+                                        <div className="error_label">
+                                            Something is not right with your form Please check through!
+                                        </div>
+                                : null }
+                                <button>
+                                       Add Product
+                                </button>
                             </div>
                        </form>
                     </div>
