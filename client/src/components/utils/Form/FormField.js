@@ -25,6 +25,10 @@ const FormField = ({formData, changed, id}) => {
             case('input'):
                 formTemplate = (
                     <div className="formBlock">
+                    {formData.showlabel ? 
+                        <div className="label_inputs">{formData.elementConfig.label}</div>
+                :null
+                }
                         <input
                             {...formData.elementConfig}
                             value={formData.value}
@@ -34,6 +38,23 @@ const FormField = ({formData, changed, id}) => {
                         {showError()}
                     </div>
                 )
+                break;
+            case("textarea"):
+            formTemplate = (
+                <div className="formBlock">
+                {formData.showlabel ? 
+                    <div className="label_inputs">{formData.elementConfig.label}</div>
+            :null
+            }
+                    <textarea
+                         {...formData.elementConfig}
+                         value={formData.value}
+                         onBlur={(event)=> changed({event,id,blur:true})}
+                         onChange={(event)=> changed({event,id}) }
+                     />
+                    {showError()}
+                </div>
+            )
             break;
             default:
                 formTemplate = null;
