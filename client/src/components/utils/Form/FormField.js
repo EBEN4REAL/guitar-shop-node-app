@@ -66,12 +66,12 @@ const FormField = ({formData, changed, id}) => {
                         <select
                              value={formData.value}
                              onBlur={(event)=> changed({event,id,blur:true})}
-                             onChange={(event)=> changed({event,id}) }
+                             onChange={(event)=> changed({event,id})}
                         >
                             <option value="">Select One</option>
-                           {formData.elementConfig.options.map(option => {
+                           {formData.elementConfig.options.map((option,index) => {
                                return (
-                                   <options name={option.name} key={option.name}>{option.value}</options>
+                                   <option  key={index}>{option.value}</option>
                                )
                            })
                         }

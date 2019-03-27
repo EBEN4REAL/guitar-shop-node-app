@@ -1,7 +1,7 @@
 import React, {Component}  from 'react';
 import UserLayout from '../../../hoc/user';
 import FormField from '../../utils/Form/FormField';
-import {update , generateData, isFormValid} from '../../utils/Form/FormActions';
+import {update , generateData, isFomValid , populatedOptionFields} from '../../utils/Form/FormActions';
 
 import {connect} from 'react-redux';
 import {getBrands, getWoods} from '../../../store/actions/product_actions/productActions';
@@ -158,8 +158,8 @@ class AddProduct extends Component {
                             value: '21'
                         },
                         {
-                            name: 21,
-                            value: '21'
+                            name: 22,
+                            value: '22'
                         },
                         {
                             name: 24,
@@ -206,6 +206,14 @@ class AddProduct extends Component {
         const formData = this.state.formData;
 
         this.props.dispatch(getBrands()).then(res => {
+            const newFormData =  populatedOptionFields(formData , this.props.products.brands, 'brand');
+            this.updateFields(newFormData)
+            console.log(this.props.products.brands);
+        })
+
+        this.props.dispatch(getBrands()).then(res => {
+            const newFormData =  populatedOptionFields(formData , this.props.products.brands, 'wood');
+            this.updateFields(newFormData)
             console.log(this.props.products.brands);
         })
     }
@@ -214,6 +222,25 @@ class AddProduct extends Component {
         this.setState({
             formData: newFormData
         })
+    }
+    updateFields = (newFormData) => {
+        this.setState({
+            formData: newFormData
+        })
+    }
+    submiForm = (event) => {
+        event.preventDefault();
+
+        let dataToSubmit = generateData(this.state.formData, 'add_product');
+        let formIsValid = isFomValid(this.state.formData, 'add_product');
+
+        if (formIsValid) {
+           console.log(dataToSubmit);
+        } else {
+            this.setState({
+                formError: true
+            })
+        }
     }
     render(){
         return (
@@ -284,7 +311,7 @@ class AddProduct extends Component {
                                             Something is not right with your form Please check through!
                                         </div>
                                 : null }
-                                <button>
+                                <button onClick={(event) => this.submiForm(event)}>
                                        Add Product
                                 </button>
                             </div>
