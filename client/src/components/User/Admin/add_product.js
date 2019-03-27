@@ -276,6 +276,9 @@ class AddProduct extends Component {
             })
         }
     }
+    imagesHandler = () => {
+        
+    }
     render(){
         return (
             <div>
@@ -290,6 +293,9 @@ class AddProduct extends Component {
                                 </div>
                             :null
                             }
+                            <FileUpload
+                                imagesHandler={(images) => this.imagesHandler(images)}
+                            />
                             <FormField
                                 id={'name'}
                                 formData={this.state.formData.name}
