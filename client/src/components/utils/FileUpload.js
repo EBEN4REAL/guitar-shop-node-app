@@ -8,7 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 class FileUpload extends Component {
     state = {
-        uploadeFiles: [],
+        uploadedFiles: [],
         uploading: true
     }
     onDrop = (files) => {
@@ -24,10 +24,12 @@ class FileUpload extends Component {
             .then(res => {
                 this.setState({
                     uploading: false,
-                    uploadFiles: [
-                        ...this.state.uploadeFiles,
+                    uploadedFiles: [
+                        ...this.state.uploadedFiles,
                         res.data
                     ]
+                }, () => {
+                    this.props.imagesHandler(this.state.uploadedFiles)
                 })
             })
        
