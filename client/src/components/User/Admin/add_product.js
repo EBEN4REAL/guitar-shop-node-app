@@ -4,7 +4,7 @@ import FormField from '../../utils/Form/FormField';
 import {update , generateData, isFomValid , populatedOptionFields} from '../../utils/Form/FormActions';
 
 import {connect} from 'react-redux';
-import {getBrands, getWoods} from '../../../store/actions/product_actions/productActions';
+import {getBrands, getWoods, addProduct} from '../../../store/actions/product_actions/productActions';
 
 class AddProduct extends Component {
     state = {
@@ -233,7 +233,6 @@ class AddProduct extends Component {
 
         let dataToSubmit = generateData(this.state.formData, 'add_product');
         let formIsValid = isFomValid(this.state.formData, 'add_product');
-
         if (formIsValid) {
            console.log(dataToSubmit);
         } else {
@@ -295,6 +294,12 @@ class AddProduct extends Component {
                              <FormField
                                 id={'frets'}
                                 formData={this.state.formData.frets}
+                                changed={(element) => this.updateForm(element)}
+                            />
+
+                             <FormField
+                                id={'available'}
+                                formData={this.state.formData.available}
                                 changed={(element) => this.updateForm(element)}
                             />
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 import {GET_PRODUCTS_BY_SALE} from '../types';
 import {GET_PRODUCTS_BY_ARRIVAL} from '../types';  
 import {GET_BRANDS, GET_WOODS} from '../types'; 
-import {GET_SHOP_PRODUCTS} from '../types';  
+import {GET_SHOP_PRODUCTS, ADD_PRODUCT} from '../types';  
 
 import {PRODUCT_SERVER}  from '../../../components/utils/misc';
 
@@ -83,6 +83,18 @@ export const getProductsToShop = (skip, limit, filters=[], previousState=[]) => 
                             })
     return {
         type: GET_SHOP_PRODUCTS,
+        payload: req
+    }
+}
+
+// ADD PRODUCTS
+export const addProduct = (dataToSubmit) => {
+    const req = axios.post(`${PRODUCT_SERVER}/article`, dataToSubmit)
+        .then(res => {
+            return res.data;
+        })
+    return {
+        type: ADD_PRODUCT,
         payload: req
     }
 }

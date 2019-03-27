@@ -9,4 +9,5 @@ export const GET_PRODUCTS_BY_ARRIVAL = 'get_products_by_arrival';
 export const GET_BRANDS = 'get_brands';
 export const GET_WOODS = 'get_woods';
 export const GET_SHOP_PRODUCTS = 'get_shop_products';
+export const ADD_PRODUCT = "add_products";
 

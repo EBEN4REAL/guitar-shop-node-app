@@ -72,9 +72,10 @@ export const populatedOptionFields = (formData, arrayData=[] , field) => {
      const newFormData = {...formData};
 
      arrayData.forEach(item => {
-         newArray.push({key: item._id, value: item.name})
+         newArray.push({name: item._id, value: item.name})
      })
 
      newFormData[field].elementConfig.options = newArray;
+     console.log(newFormData);
      return newFormData
 }
