@@ -98,3 +98,7 @@ export const addProduct = (dataToSubmit) => {
         payload: req
     }
 }
+
+export const clearProduct  = () => {
+    
+}

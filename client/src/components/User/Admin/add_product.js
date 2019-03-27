@@ -4,7 +4,7 @@ import FormField from '../../utils/Form/FormField';
 import {update , generateData, isFomValid , populatedOptionFields,resetFields} from '../../utils/Form/FormActions';
 
 import {connect} from 'react-redux';
-import {getBrands, getWoods, addProduct} from '../../../store/actions/product_actions/productActions';
+import {getBrands, getWoods, addProduct, clearProduct} from '../../../store/actions/product_actions/productActions';
 
 class AddProduct extends Component {
     state = {
@@ -241,7 +241,7 @@ class AddProduct extends Component {
             this.setState({
                 formSuccess: false
             })
-        })
+        }, 2000)
     }
     submiForm = (event) => {
         event.preventDefault();
