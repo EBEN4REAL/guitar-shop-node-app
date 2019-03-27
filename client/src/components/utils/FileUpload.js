@@ -4,9 +4,12 @@ import axios from 'axios';
 
 import FontAwesomeIcon from '@fortawesome/fontawesome';
 import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle';
-import CircularProgress from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class FileUpload extends Component {
+    state = {
+        
+    }
     render(){
         return (
             <div>
