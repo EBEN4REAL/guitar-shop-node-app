@@ -228,6 +228,11 @@ class AddProduct extends Component {
             formData: newFormData
         })
     }
+    resetFieldHandler = () => {
+        this.setState({
+            formSuccess: true
+        })
+    }
     submiForm = (event) => {
         event.preventDefault();
 
@@ -236,7 +241,7 @@ class AddProduct extends Component {
         if (formIsValid) {
            this.props.dispatch(addProduct()).then(() => {
                if(this.props.products.addProduct.success){
-
+                    this.resetFieldHandler();
                }else{
                     this.setState({formError: true});
                }
@@ -311,7 +316,7 @@ class AddProduct extends Component {
 
                             {this.state.formSuccess  ? 
                                 <div className="form_success">
-                                    Success...
+                                    Success..
                                 </div>
                             :null
                             }

@@ -22,7 +22,7 @@ const  rootReducer =  (state={} , action) => {
           case GET_SHOP_PRODUCTS:
                return {...state, toShop: action.payload.articles, toShopSize: action.payload.size}
           case ADD_PRODUCT:
-               return {...state, addProducts: action.payload} 
+               return {...state, addProduct: action.payload} 
           default:
           return state;
    }
