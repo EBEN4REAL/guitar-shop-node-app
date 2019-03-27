@@ -11,8 +11,8 @@ class FileUpload extends Component {
         uploadFiles: [],
         uploading: false
     }
-    onDrop = (e) => {
-        
+    onDrop = (files) => {
+        console.log(files);
     }
     showUploadedImages = () => {
 
