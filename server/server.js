@@ -29,6 +29,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+cloudinary.config({
+    cloud_name: '',
+    api_key: '',
+    api_secret: ''
+})
+
 // MIDDLEWARES
 const {auth} = require('./middleware/auth');
 const {admin} = require('./middleware/admin');
