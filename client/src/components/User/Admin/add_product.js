@@ -88,12 +88,12 @@ class AddProduct extends Component {
                     name: 'shipping',
                     options: [
                         {
-                            name: true,
-                            value: 'Yes'
+                            name: "Yes",
+                            value: true
                         },
                         {
-                            name: false,
-                            value: 'No'
+                            name: "No",
+                            value: false
                         }
                     ]
                 },
@@ -113,12 +113,12 @@ class AddProduct extends Component {
                     name: 'available',
                     options: [
                         {
-                            name: true,
-                            value: 'Yes'
+                            name: "Yes",
+                            value: true
                         },
                         {
-                            name: false,
-                            value: 'No'
+                            name: "No",
+                            value: false
                         }
                     ]
                 },
@@ -183,12 +183,12 @@ class AddProduct extends Component {
                     name: 'publish',
                     options: [
                         {
-                            name: true,
-                            value: 'Yes'
+                            name: "Yes",
+                            value: true
                         },
                         {
-                            name: false,
-                            value: 'No'
+                            name: "No",
+                            value: false
                         }
                     ]
                 },
@@ -234,7 +234,13 @@ class AddProduct extends Component {
         let dataToSubmit = generateData(this.state.formData, 'add_product');
         let formIsValid = isFomValid(this.state.formData, 'add_product');
         if (formIsValid) {
-           console.log(dataToSubmit);
+           this.props.dispatch(addProduct()).then(() => {
+               if(this.props.products.addProduct.success){
+
+               }else{
+                    this.setState({formError: true});
+               }
+           })
         } else {
             this.setState({
                 formError: true

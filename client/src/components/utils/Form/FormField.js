@@ -71,7 +71,7 @@ const FormField = ({formData, changed, id}) => {
                             <option value="">Select One</option>
                            {formData.elementConfig.options.map((option,index) => {
                                return (
-                                   <option  key={index}>{option.value}</option>
+                                   <option  key={option.value} value={option.value}>{option.name}</option>
                                )
                            })
                         }
