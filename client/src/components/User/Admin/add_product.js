@@ -6,6 +6,8 @@ import {update , generateData, isFomValid , populatedOptionFields,resetFields} f
 import {connect} from 'react-redux';
 import {getBrands, getWoods, addProduct, clearProduct} from '../../../store/actions/product_actions/productActions';
 
+import FileUpload from '../../utils/FileUpload';
+
 class AddProduct extends Component {
     state = {
         formError: false,
@@ -200,6 +202,16 @@ class AddProduct extends Component {
                 touched: false,
                 showlabel: true
             },
+            images: {
+                value: [],
+                validation: {
+                    required: false
+                },
+                valid: true,
+                touched: false,
+                validationMessage: '',
+                showlabel: false
+            }
         }
     }
     componentDidMount(){
