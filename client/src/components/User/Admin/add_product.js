@@ -1,7 +1,7 @@
 import React, {Component}  from 'react';
 import UserLayout from '../../../hoc/user';
 import FormField from '../../utils/Form/FormField';
-import {update , generateData, isFomValid , populatedOptionFields} from '../../utils/Form/FormActions';
+import {update , generateData, isFomValid , populatedOptionFields,resetFields} from '../../utils/Form/FormActions';
 
 import {connect} from 'react-redux';
 import {getBrands, getWoods, addProduct} from '../../../store/actions/product_actions/productActions';
@@ -228,7 +228,11 @@ class AddProduct extends Component {
             formData: newFormData
         })
     }
+     
     resetFieldHandler = () => {
+        const newFormData = resetFields(this.state.formData);
+
+
         this.setState({
             formSuccess: true
         })

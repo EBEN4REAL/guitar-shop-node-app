@@ -1,5 +1,5 @@
 
-  export const  validate = (element, formData=[]) => {
+   export const  validate = (element, formData=[]) => {
    let error = [true, ''];
 
     if(element.validation.email){
@@ -78,4 +78,7 @@ export const populatedOptionFields = (formData, arrayData=[] , field) => {
      newFormData[field].elementConfig.options = newArray;
      console.log(newFormData);
      return newFormData
+}
+export const  resetFields = () => {
+    
 }
