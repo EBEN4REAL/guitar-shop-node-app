@@ -11,6 +11,12 @@ class FileUpload extends Component {
         uploadFiles: [],
         uploading: false
     }
+    onDrop = () => {
+
+    }
+    showUploadedImages = () => {
+        
+    }
     render(){
         return (
             <div>
@@ -18,9 +24,12 @@ class FileUpload extends Component {
                     <div className="dropzone clear">
                         <DropZone
                             onDrop={(e) => this.onDrop(e)}
+                            multiple={true}
                         >
-                        
+
+
                         </DropZone>
+                        {this.showUploadedImages()}
                     </div>
                 </section>
             </div>
