@@ -211,8 +211,8 @@ class AddProduct extends Component {
             console.log(this.props.products.brands);
         })
 
-        this.props.dispatch(getBrands()).then(res => {
-            const newFormData =  populatedOptionFields(formData , this.props.products.brands, 'wood');
+        this.props.dispatch(getWoods()).then(res => {
+            const newFormData =  populatedOptionFields(formData , this.props.products.woods, 'wood');
             this.updateFields(newFormData)
             console.log(this.props.products.brands);
         })
@@ -239,7 +239,7 @@ class AddProduct extends Component {
         let dataToSubmit = generateData(this.state.formData, 'add_product');
         let formIsValid = isFomValid(this.state.formData, 'add_product');
         if (formIsValid) {
-           this.props.dispatch(addProduct()).then(() => {
+           this.props.dispatch(addProduct(dataToSubmit)).then(() => {
                if(this.props.products.addProduct.success){
                     this.resetFieldHandler();
                }else{
@@ -260,6 +260,12 @@ class AddProduct extends Component {
                        <h1>Add Product</h1>
 
                        <form onSubmit={(e) => this.submitForm(e)}>
+                       {this.state.formSuccess  ? 
+                                <div className="form_success" style={{ marginBottom: '30px' }}>
+                                    Success..
+                                </div>
+                            :null
+                            }
                             <FormField
                                 id={'name'}
                                 formData={this.state.formData.name}
@@ -314,12 +320,7 @@ class AddProduct extends Component {
                                 changed={(element) => this.updateForm(element)}
                             />
 
-                            {this.state.formSuccess  ? 
-                                <div className="form_success">
-                                    Success..
-                                </div>
-                            :null
-                            }
+                           
 
                             <div>
                                 {this.state.formError ? 
