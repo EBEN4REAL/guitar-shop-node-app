@@ -4,7 +4,8 @@ import {
     GET_BRANDS,
     GET_WOODS,
     GET_SHOP_PRODUCTS,
-    ADD_PRODUCT
+    ADD_PRODUCT,
+    CLEAR_PRODUCT
    } from '../../../store/actions/types';
 
 
@@ -23,6 +24,8 @@ const  rootReducer =  (state={} , action) => {
                return {...state, toShop: action.payload.articles, toShopSize: action.payload.size}
           case ADD_PRODUCT:
                return {...state, addProduct: action.payload} 
+          case CLEAR_PRODUCT:
+                return {...state, addProduct: action.payload} 
           default:
           return state;
    }

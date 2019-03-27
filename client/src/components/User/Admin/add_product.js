@@ -240,8 +240,10 @@ class AddProduct extends Component {
         setTimeout(() => {
             this.setState({
                 formSuccess: false
+            }, () => {
+                this.props.dispatch(clearProduct());
             })
-        }, 2000)
+        }, 3000)
     }
     submiForm = (event) => {
         event.preventDefault();

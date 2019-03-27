@@ -2,7 +2,7 @@ import axios from 'axios';
 import {GET_PRODUCTS_BY_SALE} from '../types';
 import {GET_PRODUCTS_BY_ARRIVAL} from '../types';  
 import {GET_BRANDS, GET_WOODS} from '../types'; 
-import {GET_SHOP_PRODUCTS, ADD_PRODUCT} from '../types';  
+import {GET_SHOP_PRODUCTS, ADD_PRODUCT, CLEAR_PRODUCT} from '../types';  
 
 import {PRODUCT_SERVER}  from '../../../components/utils/misc';
 
@@ -100,5 +100,8 @@ export const addProduct = (dataToSubmit) => {
 }
 
 export const clearProduct  = () => {
-    
+    return {
+        type: CLEAR_PRODUCT,
+        payload: ''
+    }
 }
