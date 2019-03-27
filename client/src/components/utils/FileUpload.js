@@ -11,11 +11,11 @@ class FileUpload extends Component {
         uploadFiles: [],
         uploading: false
     }
-    onDrop = () => {
-
+    onDrop = (e) => {
+        
     }
     showUploadedImages = () => {
-        
+
     }
     render(){
         return (
@@ -30,6 +30,20 @@ class FileUpload extends Component {
 
                         </DropZone>
                         {this.showUploadedImages()}
+
+                        {
+                            this.state.uploading ? 
+                            <div className="dropzone_box" style={{ 
+                                textAlign: 'center',
+                                paddingTop: '60px'
+                             }}>
+                                <CircularProgress 
+                                 style={{ color: "#00bcd4" }}
+                                 thickness={7}
+                                 />
+                             </div>
+                         :null
+                        }
                     </div>
                 </section>
             </div>
