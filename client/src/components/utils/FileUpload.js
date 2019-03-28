@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 class FileUpload extends Component {
     state = {
         uploadedFiles: [],
-        uploading: true
+        uploading: false
     }
     onDrop = (files) => {
         this.setState({uploading: true});
@@ -22,6 +22,7 @@ class FileUpload extends Component {
         console.log(formdata);
         axios.post('/api/users/uploadimage',formdata, config)
             .then(res => {
+                console.log(res.data);
                 this.setState({
                     uploading: false,
                     uploadedFiles: [
