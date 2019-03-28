@@ -36,7 +36,15 @@ class FileUpload extends Component {
        
     }
     showUploadedImages = () => {
+        this.state.uploadedFiles.map(item => {
+            return (
+                <div className="dropzone_box" 
+                    key={item.public_id}
+                    onClick={() => this.onRemove(item.public_id)}>
 
+                </div>
+            )
+        })
     }
     render(){
         return (
