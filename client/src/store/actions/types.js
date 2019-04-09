@@ -11,4 +11,6 @@ export const GET_WOODS = 'get_woods';
 export const GET_SHOP_PRODUCTS = 'get_shop_products';
 export const ADD_PRODUCT = "add_products";
 export const CLEAR_PRODUCT = "clear_product";
+export const ADD_BRAND = "add_brand";
+export const ADD_WOOD = "add_wood";
 

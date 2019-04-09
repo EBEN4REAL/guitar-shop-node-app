@@ -5,7 +5,10 @@ import {
     GET_WOODS,
     GET_SHOP_PRODUCTS,
     ADD_PRODUCT,
-    CLEAR_PRODUCT
+    CLEAR_PRODUCT,
+    ADD_BRAND,
+    ADD_WOOD
+
    } from '../../../store/actions/types';
 
 
@@ -26,6 +29,12 @@ const  rootReducer =  (state={} , action) => {
                return {...state, addProduct: action.payload} 
           case CLEAR_PRODUCT:
                 return {...state, addProduct: action.payload} 
+          case ADD_BRAND:
+               return {...state, addBrand: action.payload.success,
+                                 brands: action.payload.brands}
+          case ADD_WOOD:
+               return {...state, addWood: action.payload.success, 
+                                 woods: action.payload.woods}
           default:
           return state;
    }

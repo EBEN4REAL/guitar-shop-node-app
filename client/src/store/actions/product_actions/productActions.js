@@ -2,7 +2,7 @@ import axios from 'axios';
 import {GET_PRODUCTS_BY_SALE} from '../types';
 import {GET_PRODUCTS_BY_ARRIVAL} from '../types';  
 import {GET_BRANDS, GET_WOODS} from '../types'; 
-import {GET_SHOP_PRODUCTS, ADD_PRODUCT, CLEAR_PRODUCT} from '../types';  
+import {GET_SHOP_PRODUCTS, ADD_PRODUCT, CLEAR_PRODUCT, ADD_BRAND, ADD_WOOD} from '../types';  
 
 import {PRODUCT_SERVER}  from '../../../components/utils/misc';
 
@@ -103,5 +103,48 @@ export const clearProduct  = () => {
     return {
         type: CLEAR_PRODUCT,
         payload: ''
+    }
+}
+
+export const addBrand = (dataToSubmit, existingBrands) => {
+    console.log(existingBrands);
+    const req = axios.post(`${PRODUCT_SERVER}/brand` , dataToSubmit)
+            .then(res => {
+                let brands = [
+                    ...existingBrands,
+                    res.data.brandData
+                ];
+
+                return {
+                    success: res.data.success, 
+                    brands
+                }
+            }).catch(err => {
+                return "Something went wrong with your code"
+            })
+    return {
+        type: ADD_BRAND,
+        payload: req
+    }
+}
+export const addWood = (dataToSubmit, existingWoods) => {
+    console.log(existingWoods);
+    const req = axios.post(`${PRODUCT_SERVER}/wood` , dataToSubmit)
+            .then(res => {
+                let woods = [
+                    ...existingWoods,
+                    res.data.wood
+                ];
+
+                return {
+                    success: res.data.success, 
+                    woods
+                }
+            }).catch(err => {
+                return "Something went wrong with your code"
+            })
+    return {
+        type: ADD_WOOD,
+        payload: req
     }
 }
