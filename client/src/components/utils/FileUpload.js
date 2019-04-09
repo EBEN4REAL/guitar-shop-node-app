@@ -36,15 +36,18 @@ class FileUpload extends Component {
        
     }
     showUploadedImages = () => {
-        this.state.uploadedFiles.map(item => {
-            return (
-                <div className="dropzone_box" 
-                    key={item.public_id}
-                    onClick={() => this.onRemove(item.public_id)}>
-
-                </div>
-            )
-        })
+        console.log("The pics");
+        console.log(this.state.uploadedFiles);
+        this.state.uploadedFiles.map(item => (
+            <div className="dropzone_box" 
+                key={item.public_id}
+                onClick={() => this.onRemove(item.public_id)}>
+                    <div className="wrap" 
+                    style={{ background: `url(${item.url}) no-repeat` }}>
+                    
+                    </div>
+            </div>
+        ))
     }
     render(){
         return (
@@ -56,9 +59,22 @@ class FileUpload extends Component {
                             multiple={true}
                         >
 
-
+                        
                         </DropZone>
-                        {this.showUploadedImages()}
+                        <div>
+                          {this.state.uploadedFiles.map((item,index) => (
+                            <div className="dropzone_box" 
+                                key={item.public_id}
+                                onClick={() => this.onRemove(item.public_id)}>
+                                    <div className="wrap" 
+                                    style={{ background: `url(${item.url}) no-repeat` }}
+                                        key={index}>
+                                    
+                                    </div>
+                            </div>
+                        ))}
+                        </div>
+                        
 
                         {
                             this.state.uploading ? 
