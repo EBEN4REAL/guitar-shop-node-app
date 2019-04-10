@@ -37,7 +37,9 @@ class FileUpload extends Component {
     }
     onRemove = (id) => {
         axios.get(`/api/users/removeimage?public_id=${id}`).then(res => {
-            
+            let images = this.state.uploadedFiles.filter(item => {
+                return item.public._id !== id;
+            });
         })
     }
    
