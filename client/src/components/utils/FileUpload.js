@@ -35,20 +35,7 @@ class FileUpload extends Component {
             })
        
     }
-    showUploadedImages = () => {
-        console.log("The pics");
-        console.log(this.state.uploadedFiles);
-        this.state.uploadedFiles.map(item => (
-            <div className="dropzone_box" 
-                key={item.public_id}
-                onClick={() => this.onRemove(item.public_id)}>
-                    <div className="wrap" 
-                    style={{ background: `url(${item.url}) no-repeat` }}>
-                    
-                    </div>
-            </div>
-        ))
-    }
+   
     render(){
         return (
             <div>
@@ -69,26 +56,27 @@ class FileUpload extends Component {
                                     <div className="wrap" 
                                     style={{ background: `url(${item.url}) no-repeat` }}
                                         key={index}>
-                                    
-                                    </div>
+                                         {
+                                        this.state.uploading ? 
+                                        <div className="dropzone_box" style={{ 
+                                            textAlign: 'center',
+                                            paddingTop: '60px'
+                                        }}>
+                                            <CircularProgress 
+                                            style={{ color: "#00bcd4" }}
+                                            thickness={7}
+                                            />
+                                        </div>
+                                    :null
+                                    }
+                                </div>
                             </div>
                         ))}
+                        
                         </div>
                         
 
-                        {
-                            this.state.uploading ? 
-                            <div className="dropzone_box" style={{ 
-                                textAlign: 'center',
-                                paddingTop: '60px'
-                             }}>
-                                <CircularProgress 
-                                 style={{ color: "#00bcd4" }}
-                                 thickness={7}
-                                 />
-                             </div>
-                         :null
-                        }
+                       
                     </div>
                 </section>
             </div>
