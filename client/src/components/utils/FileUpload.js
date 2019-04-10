@@ -40,6 +40,12 @@ class FileUpload extends Component {
             let images = this.state.uploadedFiles.filter(item => {
                 return item.public._id !== id;
             });
+
+            this.setState({
+                uploadedFiles: images
+            })
+        }, ()=>{
+            this.props.imagesHandler([...this.state.uploadedFiles])
         })
     }
    

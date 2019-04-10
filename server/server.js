@@ -225,6 +225,15 @@ app.post('/api/users/uploadimage', auth, admin, formidable(), (req, res) => {
     })
 })
 
+// remove image from cloudinary
+app.get('/api/users/removeimage' , auth, admin , (req,res) => {
+    let image_id = req.query.public_id;
+
+    cloudinary.uploader.destroy(image_id, (err) => {
+        
+    })
+})
+
 app.post('/api/users/login', (req, res) => {
 
     // Find Email
