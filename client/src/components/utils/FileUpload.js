@@ -35,6 +35,11 @@ class FileUpload extends Component {
             })
        
     }
+    onRemove = (id) => {
+        axios.get(`/api/users/removeimage?public_id=${id}`).then(res => {
+            
+        })
+    }
    
     render(){
         return (
@@ -63,8 +68,8 @@ class FileUpload extends Component {
                                             paddingTop: '60px'
                                         }}>
                                             <CircularProgress 
-                                            style={{ color: "#00bcd4" }}
-                                            thickness={7}
+                                                style={{ color: "#00bcd4" }}
+                                                thickness={7}
                                             />
                                         </div>
                                     :null
