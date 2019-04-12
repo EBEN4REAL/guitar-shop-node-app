@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 
 import {getProdcutDetail, clearProductDetail} from '../../store/actions/product_actions/productActions';
 import PageTop from '../utils/page_top';
+import ProdInfo from './ProductInfo';
 
 
 class ProductDetail extends React.Component {
@@ -28,7 +29,10 @@ class ProductDetail extends React.Component {
                                 Images
                             </div>
                             <div className="right">
-                             Info
+                             <ProdInfo 
+                                addTocart={(id) => this.addToCart(id)}
+                                detail={this.props.products.prodDetail}
+                             />
                             </div>
                         </div>
                         :null

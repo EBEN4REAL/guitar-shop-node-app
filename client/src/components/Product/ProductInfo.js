@@ -8,9 +8,12 @@ import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
 
 
 const ProdInfo = (props) => {
-    return {
-
-    }
+    const detail = props.detail;
+    return (
+        <div>
+            <h1>{detail.brand.name} {detail.name}</h1>
+        </div>
+    )
 }
 
 export default ProdInfo;
