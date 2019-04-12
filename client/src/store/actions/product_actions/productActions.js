@@ -149,3 +149,10 @@ export const addWood = (dataToSubmit, existingWoods) => {
         payload: req
     }
 }
+
+export const getProdcutDetail = (id) => {
+    const req = axios.get(`${PRODUCT_SERVER}/articles_by_id?id=${id}&type=single`)
+        .then(res => {
+            
+        })
+}
