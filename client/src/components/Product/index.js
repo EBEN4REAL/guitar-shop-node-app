@@ -30,8 +30,7 @@ class ProductDetail extends React.Component {
                             </div>
                             <div className="right">
                              <ProdInfo 
-                                addTocart={(id) => this.addToCart(id)}
-                                detail={this.props.products.prodDetail}
+                                detail={this.props.products.productDetail}
                              />
                             </div>
                         </div>
