@@ -1,12 +1,16 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Home from './components/Home';
+
+import Auth from './hoc/auth'
 import Layout from './hoc/Layout';
+
+import Shop from './components/shop/shopIndex';
 import RegisterLogin from  './components/Register_login';
 import Register from './components/Register_login/register';
+import Home from './components/Home';
+import  ProductDetail from './components/Product';
+
 import UserDashboard from './components/User';
-import Auth from './hoc/auth'
-import Shop from './components/shop/shopIndex';
 import AddProdcut from '../src/components/User/Admin/add_product';
 import ManageCategories from './components/User/Admin/ManageCategoris';
 
@@ -23,6 +27,7 @@ const Routes = () => {
         <Route path="/" exact component={Auth(Home, null)} />
         <Route path="/register_login" exact component={Auth(RegisterLogin, false)} />
         <Route path="/shop" exact component={Auth(Shop, null)} />
+        <Route path="/product"
         
       </Switch>
     </Layout>

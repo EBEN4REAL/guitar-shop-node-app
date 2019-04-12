@@ -1,13 +1,13 @@
 import React from 'react';
 
-class Index extends React.Component {
+class ProductDetail extends React.Component {
     render(){
         return (
             <div>
-                
+                Products
             </div>
         )
     }
 }
 
-export default Index;
+export default ProductDetail;
