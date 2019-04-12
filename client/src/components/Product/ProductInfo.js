@@ -34,8 +34,8 @@ const ProdInfo = (props) => {
             <div className="tag">
                     <div><FontAwesomeIcon icon={faCheck} /></div>
                     <div className="tag_text">
-                        <div>Available</div>
-                        <div>In Store</div>
+                        <div>Not Available</div>
+                        <div>Preordr Only</div>
                     </div>
             </div>
         } 
