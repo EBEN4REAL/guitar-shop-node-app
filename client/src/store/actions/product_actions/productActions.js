@@ -3,7 +3,7 @@ import {GET_PRODUCTS_BY_SALE} from '../types';
 import {GET_PRODUCTS_BY_ARRIVAL} from '../types';  
 import {GET_BRANDS, GET_WOODS} from '../types'; 
 import {GET_SHOP_PRODUCTS, ADD_PRODUCT, CLEAR_PRODUCT, ADD_BRAND, 
-    ADD_WOOD, GET_PRODUCT_DETAIL} from '../types';  
+    ADD_WOOD, GET_PRODUCT_DETAIL, CLEAR_PRODUCT_DETAIL} from '../types';  
 
 import {PRODUCT_SERVER}  from '../../../components/utils/misc';
 
