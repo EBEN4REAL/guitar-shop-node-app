@@ -288,9 +288,7 @@ class AddProduct extends Component {
         })
     }
 
-    static getDerivedStateFromProps(props, state){
-        
-    }
+    
     render(){
         return (
             <div>
