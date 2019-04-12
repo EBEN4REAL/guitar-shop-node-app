@@ -6,6 +6,9 @@ import PageTop from '../utils/page_top';
 
 
 class ProductDetail extends React.Component {
+    componentDidMount(){
+        const id = this.props.match.params.id;
+    }
     render(){
         return (
             <div>
