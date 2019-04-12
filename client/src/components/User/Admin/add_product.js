@@ -287,6 +287,10 @@ class AddProduct extends Component {
             formData: newFormData
         })
     }
+
+    static getDerivedStateFromProps(props, state){
+        
+    }
     render(){
         return (
             <div>

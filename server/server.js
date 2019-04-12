@@ -230,7 +230,8 @@ app.get('/api/users/removeimage' , auth, admin , (req,res) => {
     let image_id = req.query.public_id;
 
     cloudinary.uploader.destroy(image_id, (err) => {
-        
+        if(err) return res.json({success:false, err});
+        res.status(200).send("Ok");
     })
 })
 
