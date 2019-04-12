@@ -6,7 +6,7 @@
     } from '../../../store/actions/types';
 
 
-const  rootReducer =  (state={} , action) => {
+const  userReducer =  (state={} , action) => {
     switch(action.type){
         case LOGIN_USER:
             return {...state, loginSuccess: action.payload }
@@ -20,4 +20,4 @@ const  rootReducer =  (state={} , action) => {
             return state;
     }
 }
-export default rootReducer;
+export default userReducer;

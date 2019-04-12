@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 
+
+import {getProdcutDetail, clearProductDetail} from '../../store/actions/product_actions/productActions';
 import PageTop from '../utils/page_top';
 
 

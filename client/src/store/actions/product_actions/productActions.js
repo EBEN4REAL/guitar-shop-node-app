@@ -161,3 +161,10 @@ export const getProdcutDetail = (id) => {
             payload: req
         }
 }
+
+export const clearProductDetail = () => {
+    return {
+        type: CLEAR_PRODUCT_DETAIL,
+        payload: ''
+    }
+}
