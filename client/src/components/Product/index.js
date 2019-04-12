@@ -1,6 +1,9 @@
 import React from 'react';
-import PageTop from '../utils/page_top';
 import {connect} from 'react-redux';
+
+
+import PageTop from '../utils/page_top';
+
 
 class ProductDetail extends React.Component {
     render(){
@@ -11,5 +14,10 @@ class ProductDetail extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        products: state.products
+    }
+}
 
-export default ProductDetail;
+export default connect(mapStateToProps)(ProductDetail);
